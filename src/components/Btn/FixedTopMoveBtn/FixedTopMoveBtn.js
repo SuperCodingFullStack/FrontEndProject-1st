@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./FixedTopMoveBtn.css";
 const FixedTopMoveBtn = () => {
   // 페이지를 최상단으로 스크롤한다.
