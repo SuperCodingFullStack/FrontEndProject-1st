@@ -1,91 +1,139 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-const products = [
-  {
-    id: 1,
-    name: "해피데이 따뜻한 겨울 손난로 대용량 외 7종",
-    href: "#",
-    mainImageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    mainImageAlt: "hotpack",
-    discountPercent: "30%",
-    price: "12,600",
-    discountPrice: "18,000",
-    review: "⭐️⭐️⭐️⭐️⭐️",
-    reviewCount: "19",
-    point: "276P",
-  },
-  {
-    id: 2,
-    name: "해피데이 따뜻한 겨울 손난로 대용량 외 7종",
-    href: "#",
-    mainImageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    mainImageAlt: "hotpack",
-    discountPercent: "30%",
-    price: "12,600",
-    discountPrice: "18,000",
-    review: "⭐️⭐️⭐️⭐️⭐️",
-    reviewCount: "19",
-    point: "276P",
-  },
-  {
-    id: 3,
-    name: "해피데이 따뜻한 겨울 손난로 대용량 외 7종",
-    href: "#",
-    mainImageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    mainImageAlt: "hotpack",
-    discountPercent: "30%",
-    price: "12,600",
-    discountPrice: "18,000",
-    review: "⭐️⭐️⭐️⭐️⭐️",
-    reviewCount: "19",
-    point: "276P",
-  },
-  // More products...
-];
+import products from "./Products";
+import { useState } from "react";
+
+const productsPerPage = 3;
 
 export default function MainItem() {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const maxPage = Math.ceil(products.length / productsPerPage) - 1;
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => (prevPage < maxPage ? prevPage + 1 : 0));
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => (prevPage > 0 ? prevPage - 1 : maxPage));
+  };
+
+  const currentProducts = products.slice(
+    currentPage * productsPerPage,
+    (currentPage + 1) * productsPerPage
+  );
+
   return (
-    <div className="my-8 bg-custom-gray ">
-      <div className="mx-auto max-w-4xl">
-        <h2 className="text-xl font-bold text-black mt-5">시선 집중</h2>
-        <div className=" mt-5 grid grid-cols-3 gap-x-6 gap-y-10">
-          {products.map((product) => (
-            <div key={product.id} className="group relative border">
-              <div className="aspect-h-1 aspect-w-2  overflow-hidden bg-white group-hover:opacity-75 h-90">
+    <div className="p-4 bg-custom-gray">
+      <div className="p-6">
+        {/* 시선집중 섹션 제목 */}
+        <h2 className="text-[23px] font-extrabold text-black">시선 집중</h2>
+        {/* 상품 넘기는 버튼 */}
+        <div className="flex justify-between mb-4">
+          <button
+            onClick={handlePrevPage}
+            className="absolute left-5 top-1/2 transform -translate-y-1/2 p-2 w-10 h-10 bg-white text-gray-400 rounded-full flex items-center justify-center hover:text-pink-400 z-10 border-[1px] border-black-300 hover:shadow-xl transition-shadow"
+          >
+            ≺
+          </button>
+          <button
+            onClick={handleNextPage}
+            className="absolute right-5 top-1/2 transform -translate-y-1/2 p-2 w-10 h-10 bg-white text-gray-400 rounded-full items-center justify-center hover:text-pink-400 z-10 border-[1px] border-black-300 hover:shadow-xl transition-shadow"
+          >
+            ≻
+          </button>
+        </div>
+        {/* 상품 상세정보 */}
+        <div className=" mt-3 grid grid-cols-3 gap-x-4 gap-y-10">
+          {currentProducts.map((product) => (
+            // 상품 상세정보 박스
+            <div
+              key={product.id}
+              className="relative border bg-white hover:shadow-lg transition-shadow "
+            >
+              {/* 상품 이미지 */}
+              <div className="aspect-h-1 aspect-w-2 overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-180">
                 <img
                   alt={product.mainImageAlt}
                   src={product.mainImageSrc}
-                  className="h-full w-full object-cover object-center"
+                  className="h-full w-full object-center object-cover transition-transform duration-300 ease-in-out"
                 />
               </div>
-              <div className="mt-4 flex justify-between">
+
+              {/* 상품 태그 */}
+              <div className="mt-0 ml-3 mr-3">
+                <p className=" bg-sale-color mb-2 border border-sale-btn text-[10px] text-sale-btn inline-block ">
+                  ↓즉시할인중
+                </p>
+
+                {/* 상품 상세정보-상품명 */}
                 <div>
-                  <h3 className="text-sm text-gray-700">
+                  <h3 className="text-sm text-black font-semibold">
                     <a href={product.href}>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">
-                  {product.price}
-                </p>
+
+                {/* 상품 상세정보-상품 할인율 */}
+                <div className="mt-1 flex gap-x-2 items-center">
+                  {product.discountPercent && (
+                    <p className=" text-[20px] font-medium text-red-500">
+                      {product.discountPercent}
+                      <span className="text-[14px] font-medium text-red-500">
+                        %
+                      </span>
+                    </p>
+                  )}
+
+                  {/* 상품 상세정보-상품 가격 */}
+                  <div className="flex items-baseline">
+                    <p className="text-[20px] font-black text-gray-900 ">
+                      {product.price}
+                    </p>
+                    <span className="text-[12px]">원~</span>
+                  </div>
+                  {product.originalPrice && (
+                    <p className="text-sm font-medium text-custom-light-gray line-through">
+                      {product.originalPrice}원
+                    </p>
+                  )}
+                </div>
+
+                {/* 상품 상세정보-리뷰 */}
+                <div className="flex gap-x-1 items-baseline">
+                  <p className="text-[12px] text-yellow-400">
+                    {"★".repeat(product.review)}
+                    {""}
+                    {"☆".repeat(5 - product.review)}
+                  </p>
+                  <p className="text-[10px] text-gray-600 ">
+                    {product.reviewCount}
+                  </p>
+                </div>
+
+                {/* 상품 상세정보-카드 적립율/포인트 적립 */}
+                <div className="flex mt-1 mb-2">
+                  {product.cardDiscountRate && (
+                    <div className="flex">
+                      <p className="text-[11px] text-gray-700 ">카드</p>
+                      <p className="text-blue-600 text-[11px] gap-x-2">
+                        {product.cardDiscountRate}
+                      </p>
+                      <p className="text-[11px] text-gray-700"> 할인</p>
+                      <span className=" text-gray-500">·</span>
+                    </div>
+                  )}
+                  <p className="text-[11px] text-gray-700 ">11pay 최대 </p>
+                  <p className="text-blue-600 text-[11px] "> {product.point}</p>
+                  <p className="text-[11px] text-gray-700"> 적립</p>
+                </div>
+
+                {/* 상품 상세정보-총 판매개수 */}
+                <div className="border-t border-gray-200 mb-2">
+                  <p className="text-[10px] text-gray-600 flex justify-end mt-2">
+                    {product.purchaseNum}개 구매
+                  </p>
+                </div>
               </div>
             </div>
           ))}
