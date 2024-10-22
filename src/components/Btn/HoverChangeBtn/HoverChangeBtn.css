@@ -1,0 +1,26 @@
+.hoverChangeBtn {
+  position: fixed;
+  /* 위치를 고정한다 */
+  bottom: 80px;
+  /* 바닥에서 떨어지게한다 */
+  right: 20px;
+  /* 오른쪽에서 떨어지게한다 */
+  background-color: #ffffff;
+  /* 배경은 검정색으로 한다 */
+  color: rgb(19, 16, 16);
+  /* 글자색은 흰색으로 한다. */
+  padding: 10px 10px 15px 10px;
+  /* 해당 영역과 안의 내용에 오른쪽 시계방향으로 여유를 둔다. */
+  border-radius: 50px;
+  /* 원형으로 만든다. */
+  border: 1px solid rgb(241, 241, 241);
+  /* 테두리를 없앤다. */
+  cursor: pointer;
+  /* 버튼에 마우스를 두면 클릭되는 모션을 표시 */
+  width: 100px;
+  /* 버튼의 가로 길이 */
+  height: 50px;
+  /* 버튼의 세로 길이 */
+  font-size: 10px;
+  /* 버튼의 글자 크기 */
+}

@@ -1,24 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
+import FixedTopMoveBtn from "./components/Btn/FixedTopMoveBtn/FixedTopMoveBtn";
+import Btn from "./components/Btn/Btn";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div>메인 브랜치 시작</div>
-      </header>
+      <div>메인 브랜치 시작</div>
+      <Btn></Btn>
     </div>
   );
 }
