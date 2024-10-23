@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer class="l_footer bg-white text-gray-600 py-8  whitespace-nowrap">
       <div class="b_footer_menu">
-        <div class="inner container mx-auto px-4">
+        <div class="inner container mx-auto px-4 flex justify-between items-center">
           <ul class="c_footer_menu_list flex flex-wrap">
             <li class="mr-4 mb-2">
               <a
@@ -107,6 +107,29 @@ const Footer = () => {
               </a>
             </li>
           </ul>
+          {/* select 박스 */}
+          <div className="flex">
+            <select className="border border-gray-300 p-2 mr-4">
+              <option value="SellerService" hidden>
+                셀러서비스
+              </option>
+              <option value="SellerOffice">셀러오피스</option>
+              <option value="SellerZone">셀러존</option>
+              <option value="AddOffice">애드오피스</option>
+              <option value="SellerAdCenter">판매자광고센터</option>
+              <option value="SellerCustomerCenter">셀러서비스</option>
+              <option value="Live">Live11 오픈라이브</option>
+            </select>
+            <select className="border border-gray-300 p-2">
+              <option value="FAMILYSITE" hidden>
+                FAMILY SITE
+              </option>
+              <option value="11">11번가주식회사</option>
+              <option value="SK">SK Telecom</option>
+              <option value="giftcon">기프티콘</option>
+              <option value="visit">비짓</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="c_footer_info container mx-auto px-4 mt-8">

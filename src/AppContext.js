@@ -1,4 +1,10 @@
-import React, { createContext, useRef, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
 
 export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
@@ -33,7 +39,6 @@ export const AppProvider = ({ children }) => {
       document.removeEventListener("mousedown", handleClickOutside); // 컴포넌트 언마운트 시 제거
     };
   }, []);
-
   return (
     <AppContext.Provider
       value={{
