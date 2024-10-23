@@ -1,0 +1,42 @@
+.pagination {
+  display: flex; /* 자식 요소들을 플렉스 컨테이너로 만들고, 자식들을 가로 또는 세로로 정렬할 수 있게 함 */
+  align-items: center; /* 플렉스 아이템(자식들)을 세로축 기준으로 중앙에 정렬 */
+  justify-content: center; /* 플렉스 아이템을 가로축 기준으로 중앙에 정렬 */
+  flex-direction: row; /* 플렉스 아이템들을 가로로 배치 (row는 기본값이지만 명시적으로 설정) */
+  font-size: 25px;
+}
+
+.pagination .dot {
+  margin: 0 5px; /* 각 마침표 사이에 좌우로 5px의 간격을 줌 */
+  margin-bottom: 33px;
+  display: inline-block; /* 각 마침표를 개행 없이 한 줄로 배치할 수 있게 함 */
+  font-weight: normal; /* 마침표의 기본 글자 굵기를 '보통'으로 설정 */
+  font-size: 50px; /* 마침표의 글자 크기를 50px로 설정 (마침표 크기를 크게 함) */
+  color: rgb(241, 241, 241); /* 마침표의 색상을 밝은 회색으로 설정 */
+}
+
+.pagination .active {
+  color: rgb(
+    120,
+    124,
+    126
+  ); /* 활성화된 (현재 페이지를 나타내는) 마침표의 색상을 어두운 회색으로 설정 */
+}
+
+.pagination > div {
+  cursor: pointer; /* 마우스 커서를 올렸을 때 커서가 '포인터(손가락 모양)'로 바뀌도록 함, 클릭 가능한 요소임을 시각적으로 나타냄 */
+}
+
+/* 뿌려지는 객체를 3개씩 2줄로 */
+.items {
+  display: grid; /* 그리드 레이아웃 사용 */
+  grid-template-columns: repeat(3, 1fr); /* 3개의 열을 균등한 크기로 설정 */
+  gap: 10px; /* 아이템 간의 간격 설정 (필요에 따라 조정 가능) */
+  margin-bottom: 20px; /* 아이템 리스트와 페이지네이션 사이의 여백 */
+}
+
+.items div {
+  text-align: center; /* 각 아이템을 가운데 정렬 */
+  padding: 10px; /* 아이템 내에 여백 설정 */
+  border: 1px solid #ccc; /* 각 아이템에 경계선을 추가 */
+}

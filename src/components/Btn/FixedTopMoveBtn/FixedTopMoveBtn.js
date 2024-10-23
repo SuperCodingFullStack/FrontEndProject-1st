@@ -5,8 +5,8 @@ const FixedTopMoveBtn = () => {
   const ScrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // 부드럽게 스크롤
-      //  behavior: "auto" // 그냥 빠르게 순간이동
+      // behavior: "smooth", // 부드럽게 스크롤
+      behavior: "auto", // 그냥 빠르게 순간이동
     });
   };
   return (

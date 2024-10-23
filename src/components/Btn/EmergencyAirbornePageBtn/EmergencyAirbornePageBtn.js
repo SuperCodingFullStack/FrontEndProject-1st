@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./EmergencyAirbornePageBtn.css";
 
 const EmergencyAirbornePageBtn = () => {
   // 긴급공수에서 사용하는 해당 컴포넌트의 이동하는 버튼
@@ -20,7 +21,7 @@ const EmergencyAirbornePageBtn = () => {
   ];
   // 더미 객체 데이터 items
 
-  const itemsPerPage = 5;
+  const itemsPerPage = 6;
   // 한페이지당 출력할 컴포넌트의 수
 
   const totalPages = Math.ceil(items.length / itemsPerPage);
@@ -62,6 +63,7 @@ const EmergencyAirbornePageBtn = () => {
         {getPageItems().map((item, index) => (
           <div key={index}>{item.name}</div>
         ))}
+        {/* 해당 메소드를 이용해 현재 페이지의 해당하는 객체들만? 가져와서 화면에 뿌린다. */}
       </div>
 
       <div className="pagination">
@@ -73,9 +75,8 @@ const EmergencyAirbornePageBtn = () => {
           <div
             key={i}
             onClick={() => handlePageClick(i + 1)}
-            // 인덱스 +1 이 페이지 넘버이므로 이렇게 설정
-            style={{ fontWeight: pageNum === i + 1 ? "bold" : "normal" }}
-            // 해당 페이지 넘버일 경우 이 곳에 굵게 표시를 한다.
+            className={`dot ${pageNum === i + 1 ? "active" : ""}`}
+            // 페이지 넘버가 현재 페이지와 일치하면 'active' 클래스 추가
           >
             .
           </div>
