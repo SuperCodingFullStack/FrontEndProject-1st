@@ -1,12 +1,15 @@
 import "./App.css";
-import MainItem from "./components/MainItem";
+import HotFocus from "./components/HotFocus";
+import TimeDeal from "./components/TimeDeal";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <MainItem />
+          <HotFocus />
+          <div className="m-10"></div>
+          <TimeDeal />
         </div>
       </header>
     </div>
