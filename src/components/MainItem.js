@@ -4,9 +4,10 @@ import { useState } from "react";
 const productsPerPage = 3;
 
 export default function MainItem() {
+  // 페이지 넘기는 버튼 기능 구현
   const [currentPage, setCurrentPage] = useState(0);
 
-  const maxPage = Math.ceil(products.length / productsPerPage) - 1;
+  const maxPage = 2;
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => (prevPage < maxPage ? prevPage + 1 : 0));
@@ -16,7 +17,21 @@ export default function MainItem() {
     setCurrentPage((prevPage) => (prevPage > 0 ? prevPage - 1 : maxPage));
   };
 
-  const currentProducts = products.slice(
+  //   무작위로 상품 선택하기
+  const shuffleArray = (array) => {
+    let shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  };
+
+  const suffledProducts = shuffleArray(products);
+  const currentProducts = suffledProducts.slice(
     currentPage * productsPerPage,
     (currentPage + 1) * productsPerPage
   );
@@ -26,25 +41,37 @@ export default function MainItem() {
       <div className="p-6">
         {/* 시선집중 섹션 제목 */}
         <h2 className="text-[23px] font-extrabold text-black">시선 집중</h2>
+
+        {/* swiper로 상품 넘기는 기능 구현
+        <Swiper
+          navigation={true}
+          modules={[Navigation]}
+          slidesPerView={3}
+          spaceBetween={20}
+          loop={true}
+          className="w-full h-full"
+        > */}
+
         {/* 상품 넘기는 버튼 */}
         <div className="flex justify-between mb-4">
           <button
             onClick={handlePrevPage}
-            className="absolute left-5 top-1/2 transform -translate-y-1/2 p-2 w-10 h-10 bg-white text-gray-400 rounded-full flex items-center justify-center hover:text-pink-400 z-10 border-[1px] border-black-300 hover:shadow-xl transition-shadow"
+            className=" p-2 w-10 h-10 bg-white text-gray-400 rounded-full flex items-center justify-center hover:text-pink-400 z-10 border-[1px] border-black-300 hover:shadow-xl transition-shadow"
           >
-            ≺
+            ﹤
           </button>
           <button
             onClick={handleNextPage}
-            className="absolute right-5 top-1/2 transform -translate-y-1/2 p-2 w-10 h-10 bg-white text-gray-400 rounded-full items-center justify-center hover:text-pink-400 z-10 border-[1px] border-black-300 hover:shadow-xl transition-shadow"
+            className=" p-2 w-10 h-10 bg-white text-gray-400 rounded-full items-center justify-center hover:text-pink-400 z-10 border-[1px] border-black-300 hover:shadow-xl transition-shadow"
           >
-            ≻
+            ﹥
           </button>
         </div>
+
         {/* 상품 상세정보 */}
         <div className=" mt-3 grid grid-cols-3 gap-x-4 gap-y-10">
           {currentProducts.map((product) => (
-            // 상품 상세정보 박스
+            //   상품 상세정보 박스
             <div
               key={product.id}
               className="relative border bg-white hover:shadow-lg transition-shadow "
@@ -59,7 +86,7 @@ export default function MainItem() {
               </div>
 
               {/* 상품 태그 */}
-              <div className="mt-0 ml-3 mr-3">
+              <div className=" ml-3 mr-3">
                 <p className=" bg-sale-color mb-2 border border-sale-btn text-[10px] text-sale-btn inline-block ">
                   ↓즉시할인중
                 </p>
@@ -67,10 +94,8 @@ export default function MainItem() {
                 {/* 상품 상세정보-상품명 */}
                 <div>
                   <h3 className="text-sm text-black font-semibold">
-                    <a href={product.href}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </a>
+                    <span aria-hidden="true" className="absolute inset-0" />
+                    {product.name}
                   </h3>
                 </div>
 
@@ -112,14 +137,14 @@ export default function MainItem() {
                 </div>
 
                 {/* 상품 상세정보-카드 적립율/포인트 적립 */}
-                <div className="flex mt-1 mb-2">
+                <div className="flex mt-1 mb-2 items-baseline">
                   {product.cardDiscountRate && (
-                    <div className="flex">
+                    <div className="flex items-baseline">
                       <p className="text-[11px] text-gray-700 ">카드</p>
-                      <p className="text-blue-600 text-[11px] gap-x-2">
+                      <p className="text-blue-600 text-[11px]">
                         {product.cardDiscountRate}
                       </p>
-                      <p className="text-[11px] text-gray-700"> 할인</p>
+                      <p className="text-[11px] text-gray-700">할인</p>
                       <span className=" text-gray-500">·</span>
                     </div>
                   )}
@@ -128,12 +153,51 @@ export default function MainItem() {
                   <p className="text-[11px] text-gray-700"> 적립</p>
                 </div>
 
-                {/* 상품 상세정보-총 판매개수 */}
-                <div className="border-t border-gray-200 mb-2">
-                  <p className="text-[10px] text-gray-600 flex justify-end mt-2">
+                {/* 상품 상세정보-쿠폰 */}
+                {product.coupon ? (
+                  <div className="border-t border-gray-200 flex">
+                    <div className="items-baseline mb-2">
+                      <img
+                        alt={product.couponImageAlt}
+                        src={product.couponImageSrc}
+                        className="objecr-center w-6 h-5 mt-2"
+                      />
+                    </div>
+                    <div className="items-baseline mt-1">
+                      <button className="text-[11px] text-gray-600 ml-2 ">
+                        {product.couponName} ﹥
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="h-[40px]"></div>
+                )}
+              </div>
+
+              {/* 상품 상세정보-배송 날짜/총 판매개수 */}
+              <div className="border-t border-gray-200 mx-3 mb-2"></div>
+              <div className="flex justify-between items-baseline mx-3 mb-2">
+                {product.freeDeliver ? (
+                  <div className="flex items-baseline">
+                    <p className="text-[11px] text-gray-600 mt-2">무료배송</p>
+                    {product.deliverDate && (
+                      <>
+                        <span className=" text-gray-500">·</span>
+                        <p className="text-blue-600 text-[11px] ">
+                          {product.deliverDate}
+                        </p>
+                      </>
+                    )}
+                  </div>
+                ) : (
+                  <div className="w-[80px]"></div>
+                )}
+
+                {product.purchaseNum && (
+                  <p className="text-[11px] text-gray-600 mt-2">
                     {product.purchaseNum}개 구매
                   </p>
-                </div>
+                )}
               </div>
             </div>
           ))}
