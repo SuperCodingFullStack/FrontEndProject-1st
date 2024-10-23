@@ -1,25 +1,24 @@
 const Products = [
   {
     id: 1,
-    name: "해피데이 따뜻한 겨울 손난로 대용량 외 7종",
+    name: "쟌슨빌 부대찌개 500g 2+2팩 더진한/오리지널",
     href: "#",
     mainImageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    mainImageAlt: "hotpack",
-    discountPercent: "30",
-    price: "12,600",
-    originalPrice: "18,000",
+      "https://cdn.011st.com/11dims/resize/720x360/quality/100/11src/product/2247363143/D.jpg?990000000",
+    mainImageAlt: "food",
+    discountPercent: "15",
+    price: "15,980",
+    originalPrice: "21,300",
     review: 5,
-    reviewCount: "19",
-    cardDiscountRate: "5%",
-    point: "276P",
+    reviewCount: "5,343",
+    point: "309P",
     purchaseNum: "8,203",
     coupon: true,
     couponImageSrc: "/assets/coupon.svg",
     couponImageAlt: "coupon",
-    couponName: "중복 할인",
+    couponName: "카카오페이) 마트 쿠폰",
     freeDeliver: true,
-    deliverDate: "10/24(목) 도착",
+    remainProduct: "1,967",
   },
   {
     id: 2,
@@ -36,6 +35,7 @@ const Products = [
     point: "276P",
     purchaseNum: "8,203",
     freeDeliver: true,
+    remainProduct: "670",
   },
   {
     id: 3,
@@ -51,6 +51,7 @@ const Products = [
     reviewCount: "19",
     point: "276P",
     purchaseNum: "8,203",
+    remainProduct: "670",
   },
   {
     id: 4,
@@ -66,6 +67,7 @@ const Products = [
     reviewCount: "19",
     point: "276P",
     purchaseNum: "8,203",
+    remainProduct: "670",
   },
   {
     id: 5,
@@ -81,6 +83,7 @@ const Products = [
     reviewCount: "19",
     point: "276P",
     purchaseNum: "8,203",
+    remainProduct: "670",
   },
   {
     id: 6,
@@ -96,6 +99,7 @@ const Products = [
     reviewCount: "19",
     point: "276P",
     purchaseNum: "8,203",
+    remainProduct: "670",
   },
   {
     id: 7,
@@ -111,6 +115,7 @@ const Products = [
     reviewCount: "19",
     point: "276P",
     purchaseNum: "8,203",
+    remainProduct: "670",
   },
   {
     id: 8,
@@ -133,6 +138,7 @@ const Products = [
     couponName: "중복 할인",
     freeDeliver: true,
     deliverDate: "10/24(목) 도착",
+    remainProduct: "670",
   },
   {
     id: 9,
@@ -152,6 +158,7 @@ const Products = [
     couponImageSrc: "/assets/coupon.svg",
     couponImageAlt: "coupon",
     couponName: "중복 할인",
+    remainProduct: "670",
   },
 ];
 
