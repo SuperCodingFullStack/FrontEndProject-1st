@@ -1,0 +1,54 @@
+:root {
+  --swiper-theme-color: #000;
+}
+
+.swiper-container {
+  z-index: 10;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  z-index: 10000;
+  color: black;
+  background-color: white;
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: red;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px; /* 화살표 아이콘 크기 조정 */
+}
+
+.swiper-button-next {
+  right: -20px;
+}
+
+.swiper-button-prev {
+  left: -20px;
+}
+
+.swiper-slide {
+  display: grid;
+}
+
+.aspect-h-1.aspect-w-2:hover img {
+  transform: scale(1.5); /* 마우스 오버 시 이미지 크기 1.1배로 확대 */
+}
+
+.swiper-slide > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
