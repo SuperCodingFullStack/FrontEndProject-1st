@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { LiaBarsSolid } from "react-icons/lia"; // 아이콘 가져오기
 import { IoSearchSharp } from "react-icons/io5";
 import { AiOutlineUser } from "react-icons/ai";
@@ -16,7 +15,7 @@ const Header = () => {
     toggleLoginStatus,
     isDropdownOpen,
     handleMouseEnter,
-    handleMouseLeave,
+    dropdownRef,
   } = useContext(AppContext);
 
   // 검색 옵션 상태 관리
@@ -28,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <Router>
+    <div>
       <header className="bg-white shadow fixed top-0 left-0 w-full z-50">
         {/* 헤더의 기본 스타일 및 고정 위치 설정 */}
         <div className="flex justify-between items-center px-4 md:px-16 py-4 border-b border-gray-300">
@@ -69,12 +68,11 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <div className="flex gap-2">
               <div
                 className="w-14 h-14 hover:text-red-600 flex items-center justify-center cursor-pointer mx-2"
                 onMouseEnter={handleMouseEnter} // 마우스가 올라갈 때 드롭다운 열기
-                onMouseLeave={handleMouseLeave} // 마우스가 떠날 때 드롭다운 닫기
               >
                 <AiOutlineUser size="40" /> {/* 사용자 아이콘 */}
               </div>
@@ -117,7 +115,7 @@ const Header = () => {
         </div>
       </header>
       <NavBar toggleLoginStatus={toggleLoginStatus} isLoggedIn={isLoggedIn} />
-    </Router>
+    </div>
   );
 };
 

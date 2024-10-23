@@ -1,14 +1,13 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useRef, useState, useEffect } from "react";
 
-// Context 생성: 애플리케이션의 전역 상태를 관리하기 위한 Context를 생성
 export const AppContext = createContext();
-
-// Provider 컴포넌트: 자식 컴포넌트에 Context 값을 제공하는 Provider 컴포넌트
 export const AppProvider = ({ children }) => {
   // 로그인 상태를 관리하는 상태 변수
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // 드롭다운 메뉴의 열림 상태를 관리하는 상태 변수
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // 드롭다운 ref, DOM요소 감싸기
+  const dropdownRef = useRef(null);
 
   // 로그인 상태를 토글하는 함수
   const toggleLoginStatus = () => {
@@ -20,10 +19,20 @@ export const AppProvider = ({ children }) => {
     setIsDropdownOpen(true);
   };
 
-  // 마우스가 나갈 때 드롭다운 메뉴를 닫기 위한 함수
-  const handleMouseLeave = () => {
-    setIsDropdownOpen(false);
+  // 외부 영역 클릭 시 드롭다운 메뉴 닫기
+  const handleClickOutside = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setIsDropdownOpen(false);
+    }
   };
+
+  // 외부 클릭 감지하는 useEffect
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside); // 클릭 이벤트 추가
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside); // 컴포넌트 언마운트 시 제거
+    };
+  }, []);
 
   return (
     <AppContext.Provider
@@ -32,7 +41,7 @@ export const AppProvider = ({ children }) => {
         toggleLoginStatus,
         isDropdownOpen,
         handleMouseEnter,
-        handleMouseLeave,
+        dropdownRef,
       }}
     >
       {children}

@@ -34,21 +34,21 @@ const NavBar = () => {
 
   // 네비게이션 아이템 목록
   const navItems = [
-    { name: "베스트", link: "/best" },
-    { name: "쇼킹딜", link: "/shocking-deal" },
-    { name: "슈팅배송", link: "/shooting-delivery" },
-    { name: "쿠폰/기획전", link: "/coupons" },
-    { name: "신선식품", link: "/fresh-food" },
-    { name: "장보기", link: "/shopping" },
-    { name: "9900원샵", link: "/9900-shop" },
-    { name: "리퍼블리", link: "/refurbished" },
-    { name: "T공식대리점", link: "/official-agent" },
-    { name: "아마존", link: "/amazon", icon: <AiFillAmazonCircle /> },
+    { name: "베스트", link: "best" },
+    { name: "쇼킹딜", link: "shocking-deal" },
+    { name: "슈팅배송", link: "shooting-delivery" },
+    { name: "쿠폰/기획전", link: "coupons" },
+    { name: "신선식품", link: "fresh-food" },
+    { name: "장보기", link: "shopping" },
+    { name: "9900원샵", link: "9900-shop" },
+    { name: "리퍼블리", link: "refurbished" },
+    { name: "T공식대리점", link: "official-agent" },
+    { name: "아마존", link: "amazon", icon: <AiFillAmazonCircle /> },
   ];
 
   return (
     <nav
-      className={`fixed top-28 left-0 w-full z-40 transition-transform duration-300 ${
+      className={`fixed top-28 left-0 w-full z-40 transition-transform duration-300 overflow-hidden ${
         showNav ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -58,7 +58,7 @@ const NavBar = () => {
           {navItems.map(({ name, link, icon }) => (
             <Link
               key={name} // 각 링크의 고유 키 설정
-              to={link} // 링크 설정
+              to={`/${link}`} // 링크 설정
               className="relative cursor-pointer group whitespace-nowrap"
             >
               <span className="flex items-center px-2 py-1">
@@ -70,7 +70,10 @@ const NavBar = () => {
             </Link>
           ))}
         </div>
-        <div className="cursor-pointer flex gap-4" onClick={toggleLoginStatus}>
+        <div
+          className="cursor-pointer flex gap-4 h-12 items-center whitespace-nowrap"
+          onClick={toggleLoginStatus}
+        >
           {/* 로그인 상태에 따른 내용 표시 */}
           {!isLoggedIn ? (
             <>
