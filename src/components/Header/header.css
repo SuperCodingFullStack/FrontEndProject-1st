@@ -1,0 +1,18 @@
+.b_11 {
+    background-image: url('../../assets/sp_common.svg');
+    background-repeat: no-repeat;
+    background-size: 850px 309px;
+    background-position: -117px -98px;
+    background-color: #fff;
+    width: 90px;
+    height: 40px;
+}
+
+.b_11 a {
+    overflow: hidden;
+    display: block;
+    line-height: 400px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}

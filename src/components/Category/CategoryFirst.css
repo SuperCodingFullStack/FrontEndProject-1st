@@ -1,0 +1,30 @@
+.backs {
+    position: absolute;
+    background-size: 140px 140px;
+    width: 24px;
+    height: 24px;
+    background-image: url('../../assets/sp_category_menu.png');
+    background-repeat: no-repeat;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 20px;
+}
+
+.first a span {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.first a.hovered {
+    background-image: linear-gradient(45deg,#ff3c31 0%,#ff00b2 100%);
+    color: #fff;
+}
+
+.first a.hovered svg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    right: 20px;
+}

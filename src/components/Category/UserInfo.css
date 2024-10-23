@@ -1,0 +1,8 @@
+.userInfo i.bi-lock {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 0;
+    transform: scaleY(0.75);
+}
