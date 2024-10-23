@@ -22,8 +22,8 @@ export default function MainItem() {
   const shuffledProducts = shuffleArray(products);
 
   return (
-    <div className=" bg-custom-gray">
-      <div className="p-6">
+    <div className="z-0 bg-custom-gray m-0">
+      <div className="z-0 p-6">
         {/* 섹션 제목 */}
         <h2 className="text-[23px] font-extrabold text-black mb-3">
           시선 집중
@@ -44,7 +44,7 @@ export default function MainItem() {
               className="hover:shadow-xl transition-shadow"
             >
               {/* 상품 상세정보 박스 */}
-              <div className="z-0 border  bg-white hover:shadow-xl transition-shadow">
+              <div className=" border  bg-white hover:shadow-xl transition-shadow">
                 {/* 상품 이미지 */}
                 <div className=" aspect-h-1 aspect-w-2 overflow-visible transition-transform ease-in-out transform hover:scale-180">
                   <img
