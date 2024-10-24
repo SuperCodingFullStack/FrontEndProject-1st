@@ -1,16 +1,16 @@
-.swiper-container {
-  z-index: 10;
+.swiper {
+  overflow: visible;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  z-index: 10000;
+  z-index: 10;
   color: black;
   background-color: white;
   font-size: 16px;
   width: 40px;
   height: 40px;
-  border: 1px solid gray;
+  border: 1px solid #e1e1e1;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -33,4 +33,15 @@
 
 .swiper-button-prev {
   left: -20px;
+}
+
+.swiper-slide {
+  flex-shrink: 0; /* 슬라이드가 축소되지 않도록 설정 */
+}
+
+/* 슬라이드 영역에만 overflow: hidden을 적용 */
+.slide-wrapper {
+  width: 100%;
+  overflow: hidden; /* 슬라이드가 넘쳐 보이는 문제 해결 */
+  position: relative;
 }
