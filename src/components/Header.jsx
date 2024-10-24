@@ -96,6 +96,13 @@ const Header = () => {
                   <li className="px-4 py-2 hover:text-red-600 hover:bg-gray-100 cursor-pointer">
                     회원정보
                   </li>
+                  {/* 로그인 상태일 때만 로그아웃 표시 */}
+                  <li
+                    className="px-4 py-2 hover:text-red-600 hover:bg-gray-100 cursor-pointer"
+                    onClick={toggleLoginStatus} // 클릭 시 true->false
+                  >
+                    로그아웃
+                  </li>
                 </ul>
               </div>
             )}

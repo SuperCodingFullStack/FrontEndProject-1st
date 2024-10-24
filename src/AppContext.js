@@ -1,10 +1,5 @@
-import React, {
-  createContext,
-  useRef,
-  useState,
-  useEffect,
-  useContext,
-} from "react";
+import React, { createContext, useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
@@ -14,10 +9,17 @@ export const AppProvider = ({ children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // 드롭다운 ref, DOM요소 감싸기
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   // 로그인 상태를 토글하는 함수
   const toggleLoginStatus = () => {
-    setIsLoggedIn(!isLoggedIn);
+    if (isLoggedIn) {
+      // 로그인 상태면
+      setIsLoggedIn(false); // 로그아웃 상태로 변경
+      navigate("/"); // 로그아웃 후 기본 페이지로 이동
+    } else {
+      setIsLoggedIn(true);
+    }
   };
 
   // 마우스가 들어올 때 드롭다운 메뉴를 열기 위한 함수
@@ -39,6 +41,7 @@ export const AppProvider = ({ children }) => {
       document.removeEventListener("mousedown", handleClickOutside); // 컴포넌트 언마운트 시 제거
     };
   }, []);
+
   return (
     <AppContext.Provider
       value={{

@@ -4,6 +4,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -14,16 +15,16 @@ import { AppProvider } from "./AppContext"; // AppProvider 가져오기
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
+    <Router>
+      <AppProvider>
         <div className="flex flex-col min-h-screen">
           <Header />
           <NavBar />
           <MainContent />
           <Footer />
         </div>
-      </Router>
-    </AppProvider>
+      </AppProvider>
+    </Router>
   );
 }
 
