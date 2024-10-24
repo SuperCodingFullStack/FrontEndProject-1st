@@ -13,7 +13,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainSample />} />
-        <Route path="/product/:Productid" element={<Details />} />
       </Routes>
     </BrowserRouter>
   );
