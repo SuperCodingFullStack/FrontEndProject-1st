@@ -1,0 +1,4 @@
+.tabs2 > nav > li > a:hover {
+    background-color: rgb(250,250,250);
+    color: rgb(255,7,55);
+}

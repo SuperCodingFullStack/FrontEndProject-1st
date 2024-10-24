@@ -1,24 +1,19 @@
 import React from 'react';
-import CategoryFirst from './CategoryFirst';
-import catemock from './mock/categories';
+import Tabs1 from './Tabs1';
+import Tabs2 from './Tabs2';
 
 const CategoryTab = () => {
     return (
-        <div className="c_tab absolute mt-3 py-5 bg-white"
+        <div className="c_tab absolute mt-2"
         style={{
             top: "64px",
             left: "0",
             right: "0",
-            height: "calc(100% - 64px)"
+            height: "calc(100% - 64px)",
+            overflowY: "auto"
         }}>
-            <h3 className="font-bold text-lg px-5 pb-3">카테고리</h3>
-            <nav>
-               {
-                catemock.map((mock)=>(
-                    <CategoryFirst mock={mock} />
-                ))
-               }
-            </nav>
+            <Tabs1 />
+            <Tabs2 />
         </div>
     )
 }
