@@ -5,7 +5,7 @@ const ProductMock = [
         originalPrice : 59000,
         salePrice: 49000,
         mainThumb: './assets/product/NICE_CLAUP.jpg',
-        subThumb: ['./assets/product/claup_1.jpg','./assets/product/claup_2.jpg']
+        subThumb: ['https://i.imgur.com/S9A5bEH.jpg','https://i.imgur.com/9x10tRa.jpg']
     },
     {
         productID : 2,
@@ -13,7 +13,7 @@ const ProductMock = [
         originalPrice : 59000,
         salePrice: 49000,
         mainThumb: './assets/product/NICE_CLAUP.jpg',
-        subThumb: ['./assets/product/claup_1.jpg','./assets/product/claup_2.jpg']
+        subThumb: ['https://i.imgur.com/S9A5bEH.jpg','https://i.imgur.com/9x10tRa.jpg']
     },
     {
         productID : 3,
@@ -21,7 +21,7 @@ const ProductMock = [
         originalPrice : 59000,
         salePrice: 49000,
         mainThumb: './assets/product/NICE_CLAUP.jpg',
-        subThumb: ['./assets/product/claup_1.jpg','./assets/product/claup_2.jpg']
+        subThumb: ['https://i.imgur.com/S9A5bEH.jpg','https://i.imgur.com/9x10tRa.jpg']
     },
     {
         productID : 4,
@@ -29,7 +29,7 @@ const ProductMock = [
         originalPrice : 59000,
         salePrice: 49000,
         mainThumb: './assets/product/NICE_CLAUP.jpg',
-        subThumb: ['./assets/product/claup_1.jpg','./assets/product/claup_2.jpg']
+        subThumb: ['https://i.imgur.com/S9A5bEH.jpg','https://i.imgur.com/9x10tRa.jpg']
     }
 ];
 
