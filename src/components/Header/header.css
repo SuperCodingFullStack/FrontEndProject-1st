@@ -16,3 +16,7 @@
     height: 100%;
     position: relative;
 }
+
+header .wrapper {
+    max-width: 80%;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({ img, alt }) => {
+const Button = ({ img, alt, clickFunc }) => {
 
     return(
         <button
@@ -12,7 +12,8 @@ const Button = ({ img, alt }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
-        }}>
+        }}
+        onClick={clickFunc}>
             <img src={img} alt={alt} width="30px" height="30px" />
         </button>
     )

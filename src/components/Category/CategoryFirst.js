@@ -4,7 +4,7 @@ import './CategoryFirst.css';
 import { FaChevronRight } from "react-icons/fa6";
 import CategoryTwoDepth from './CategoryTwoDepth';
 
-const CategoryFirst = ({ mock, mockIndex }) => {
+const CategoryFirst = ({ mock }) => {
     const [isHovered,setIsHovered] = useState(false);
 
     const backsAfter = isHovered ? {
@@ -13,9 +13,10 @@ const CategoryFirst = ({ mock, mockIndex }) => {
     : {
         backgroundPosition: `${mock.positionXnoClick}px ${mock.positionYnoClick}px`
     }
+    
 
     return (
-        <li className={`first ${isHovered ? 'hovered' : ''}`} onMouseOver={() => { setIsHovered(true); }} onMouseLeave = {() => { setIsHovered(false); }}>
+        <li className={`first ${isHovered ? 'hovered' : ''}`} onMouseOver={() => { setIsHovered(true); }} onMouseLeave={()=>{ setIsHovered(false)}}  >
           <a href="/" className= {`block py-4 pl-14 relative`} >
             <span>{mock.title}</span>
             <div className="backs" style={backsAfter}></div>

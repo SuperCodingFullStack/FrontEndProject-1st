@@ -10,7 +10,8 @@ const CategoryTab = () => {
             left: "0",
             right: "0",
             height: "calc(100% - 64px)",
-            overflowY: "auto"
+            overflowY: "auto",
+            boxSizing: "content-box",
         }}>
             <Tabs1 />
             <Tabs2 />

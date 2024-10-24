@@ -1,0 +1,64 @@
+.image_swiper .swiper-slide a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.image_swiper .swiper-slide .thumb {
+    height: 158px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.image_swiper .swiper-slide .thumb img {
+    position: absolute;
+    top: 85px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+}
+
+.image_swiper .swiper-slide .info {
+    background-color: #fff;
+}
+
+.image_swiper .swiper-slide .info .price {
+    margin-top: 16px;
+}
+
+.image_swiper .swiper-slide .info .price .salePercent {
+    color: rgb(255,70,110);
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.image_swiper .swiper-slide .info .price .salePercent span {
+    font-size: 18px;
+}
+
+.image_swiper .swiper-slide .info .price .saleIsOriginal,
+.image_swiper .swiper-slide .info .price .sale {
+    font-size: 26px;
+    font-weight: 700;
+    margin-left: 16px;
+}
+
+.image_swiper .swiper-slide .info .price .saleIsOriginal span,
+.image_swiper .swiper-slide .info .price .sale span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.image_swiper .swiper-slide .info .price .sales {
+    margin-left: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(0,0,0,.15);
+    text-decoration: line-through;
+}

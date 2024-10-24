@@ -1,3 +1,9 @@
-.menuOn {
-    transform : translateX(0);
+.category_header {
+    transform: translateX(-100%);
+    z-index: 10;
+}
+
+.category_header.menuon {
+    transform: translateX(0);
+    transition: transform .4s;
 }
