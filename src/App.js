@@ -39,6 +39,7 @@ function MainContent() {
       {isHomePage ? <MainSwiper /> : null} {/* 기본 페이지에서만 Swiper 표시 */}
       <Routes>
         <Route path="/" element={<HotFocus />} /> {/* Home에서 HotFocus 표시 */}
+        <Route path="/" element={<TimeDeal />} /> {/* Home에서 TimeDeal 표시 */}
         <Route path="/:name" element={<NavPage />} />
       </Routes>
     </main>
