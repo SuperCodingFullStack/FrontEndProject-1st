@@ -37,7 +37,7 @@ const Header = () => {
           </div>
           {/* 로고 */}
           <div className="flex-shrink-0 w-24 mr-2">
-            <a href="http://localhost:3000/">
+            <a href="/">
               <img className="cursor-pointer" alt="11번가로고" src={logo} />
             </a>
           </div>
