@@ -4,11 +4,15 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      height: {
+        "68vh": "68vh",
+      },
       colors: {
         "custom-gray": "#F6F7FB",
         "custom-light-gray": "#A9A9A9",
         "sale-btn": "#06AE6F",
         "sale-color": "#F7FCFA",
+        "timer-red": "#FF0038",
       },
     },
   },
