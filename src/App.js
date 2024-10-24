@@ -1,33 +1,17 @@
-<<<<<<< HEAD
-import "./App.css";
-import HotFocus from "./components/HotFocus";
-import TimeDeal from "./components/TimeDeal";
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-          <HotFocus />
-          <div className="m-10"></div>
-          <TimeDeal />
-        </div>
-      </header>
-    </div>
-=======
 import React from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   useLocation,
-  useNavigate,
 } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import NavPage from "./components/NavPage";
 import MainSwiper from "./components/MainSwiper";
+import HotFocus from "./components/HotFocus";
+import TimeDeal from "./components/TimeDeal";
 import { AppProvider } from "./AppContext"; // AppProvider 가져오기
 
 function App() {
@@ -54,11 +38,10 @@ function MainContent() {
     <main className="flex-grow mt-44">
       {isHomePage ? <MainSwiper /> : null} {/* 기본 페이지에서만 Swiper 표시 */}
       <Routes>
-        <Route path="/" element={<main className="flex-grow"></main>} />
+        <Route path="/" element={<HotFocus />} /> {/* Home에서 HotFocus 표시 */}
         <Route path="/:name" element={<NavPage />} />
       </Routes>
     </main>
->>>>>>> feature-Dayoung
   );
 }
 
