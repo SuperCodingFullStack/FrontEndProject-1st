@@ -37,7 +37,7 @@ function MainContent() {
     <main className="flex-grow mt-44">
       {isHomePage ? <MainSwiper /> : null} {/* 기본 페이지에서만 Swiper 표시 */}
       <Routes>
-        <Route path="/" element={<main className="flex-grow">메인</main>} />
+        <Route path="/" element={<main className="flex-grow"></main>} />
         <Route path="/:name" element={<NavPage />} />
       </Routes>
     </main>

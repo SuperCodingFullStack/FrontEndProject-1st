@@ -10,6 +10,8 @@ export const AppProvider = ({ children }) => {
   // 드롭다운 ref, DOM요소 감싸기
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+  // 자동 스와이프 상태 관리하는 상태변수
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // 로그인 상태를 토글하는 함수
   const toggleLoginStatus = () => {
@@ -42,6 +44,11 @@ export const AppProvider = ({ children }) => {
     };
   }, []);
 
+  // 자동 스와이프 토글 함수
+  const toggleAutoSwipe = () => {
+    setIsAutoPlaying((prev) => !prev); //상태 토글
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -50,6 +57,8 @@ export const AppProvider = ({ children }) => {
         isDropdownOpen,
         handleMouseEnter,
         dropdownRef,
+        isAutoPlaying,
+        toggleAutoSwipe,
       }}
     >
       {children}
