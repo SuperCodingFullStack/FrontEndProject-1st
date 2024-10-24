@@ -48,9 +48,12 @@ const TimeDeal = () => {
     setShuffledProducts(shuffleArray(products));
   }, []);
 
+  // 마우스를 올려놨을 때 사진 확대
+  const [hoveredId, setHoveredId] = useState(null);
+
   return (
     // 전체 타임딜 박스
-    <div className="p-6 bg-white">
+    <div className="p-6 bg-white m-10">
       {/* 섹션 제목 */}
       <div className="flex justify-between">
         <h2 className="text-[23px] font-extrabold text-black">타임딜</h2>
@@ -67,50 +70,58 @@ const TimeDeal = () => {
         navigation={true} // Swiper 내비게이션 활성화
         modules={[Navigation]}
         slidesPerView={1} // 한 번에 보여줄 상품 개수
-        loop={false} // 무한 루프
+        spaceBetween={0} // 상품 사이의 간격
+        loop={true} // 무한 루프
+        centeredSlides={true}
       >
         {shuffledProducts.map((product) => (
           <SwiperSlide
             key={product.id}
-            className="z-10 hover:shadow-xl transition-shadow"
+            className=" hover:shadow-xl transition-shadow"
           >
             {/* 상품 상세정보 박스 */}
-            <div className="flex bg-white mt-4">
+            <div className="flex bg-white mt-2">
               {/* 상품 이미지 */}
-              <div className="w-1/2 aspect-h-1 aspect-w-3 overflow-hidden border border-gray-300">
+              <div
+                className="w-1/2 aspect-h-1 aspect-w-4 overflow-hidden border border-gray-300"
+                onMouseEnter={() => setHoveredId(product.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
                 <img
                   alt={product.mainImageAlt}
                   src={product.mainImageSrc}
-                  className="object-center object-fill h-full w-full"
+                  className={`h-full w-full object-center object-cover transition-transform ease-in-out ${
+                    hoveredId === product.id ? "scale-105" : ""
+                  }`}
                 />
               </div>
 
               {/* 상품 상세정보 */}
-              <div className="flex flex-col justify-between w-1/2 ">
+              <div className="flex flex-col justify-between w-1/2 border-t border-b ml-[20px]">
                 {/* 타이머 */}
                 <div>
-                  <p className="text-[35px] text-red-500 font-extrabold">
+                  <p className="text-[25px] text-timer-red font-extrabold mt-8">
                     {formatTime(time)}
                   </p>
                 </div>
 
                 {/* 상품 태그 */}
                 <div className="flex items-start mt-3">
-                  <p className=" bg-sale-color border p-[2px] border-sale-btn text-[13px] text-sale-btn inline-block ">
+                  <p className=" bg-sale-color border p-[1.5px] border-sale-btn text-[11px] text-sale-btn inline-block ">
                     ↓즉시할인중
                   </p>
                 </div>
 
                 {/* 상품명 */}
                 <div className="mt-1">
-                  <h3 className="text-[17px] text-black font-semibold">
+                  <h3 className="text-[16px] text-black font-semibold">
                     {product.name}
                   </h3>
                 </div>
 
                 {/* 타임딜가 */}
-                <div className="flex gap-x-2 items-baseline mt-1">
-                  <p className="text-[20px] font-semibold text-red-500">
+                <div className="flex gap-x-2 items-baseline">
+                  <p className="text-[18px] font-semibold text-red-500">
                     타임딜가
                   </p>
 
@@ -130,7 +141,7 @@ const TimeDeal = () => {
 
                 {/* 상품 리뷰 */}
                 <div className="flex gap-x-1 items-baseline">
-                  <p className="text-[15px] text-yellow-400">
+                  <p className="text-[12px] text-yellow-400">
                     {"★".repeat(product.review)}
                     {"☆".repeat(5 - product.review)}
                   </p>
@@ -140,7 +151,7 @@ const TimeDeal = () => {
                 </div>
 
                 {/* 배송 */}
-                <div className="flex justify-start items-baseline">
+                <div className="flex justify-start items-baseline ">
                   <div className="flex items-baseline">
                     <p className="text-[12px] text-gray-600">무료배송</p>
                   </div>
@@ -161,8 +172,10 @@ const TimeDeal = () => {
                 </div>
 
                 {/* 11번가 추천 상품 */}
-                <div className="mt-4">
-                  <p className="text-[13px] text-gray-600">11번가 추천상품</p>
+                <div className="mt-4 mb-8">
+                  <p className="text-[13px] text-gray-600 ml-2">
+                    11번가 추천상품
+                  </p>
                 </div>
               </div>
             </div>

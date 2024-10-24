@@ -4,26 +4,27 @@ import "swiper/css/navigation";
 import "./HotFocus.css";
 import { Navigation } from "swiper/modules";
 import products from "./Products"; // 상품 데이터
+import { useState } from "react";
 
-export default function MainItem() {
-  // 상품 데이터를 무작위로 섞는 함수
-  const shuffleArray = (array) => {
-    let shuffledArray = [...array];
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ];
-    }
-    return shuffledArray;
-  };
+// 상품 데이터를 무작위로 섞는 함수
+const shuffleArray = (array) => {
+  let shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
 
-  const shuffledProducts = shuffleArray(products);
+const shuffledProducts = shuffleArray(products);
+
+export default function HotFocus() {
+  // 마우스를 올려놨을 때 사진 확대
+  const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <div className="z-0 bg-custom-gray m-0">
-      <div className="z-0 p-6">
+    <div className=" bg-custom-gray">
+      <div className=" p-[50px]">
         {/* 섹션 제목 */}
         <h2 className="text-[23px] font-extrabold text-black mb-3">
           시선 집중
@@ -37,6 +38,7 @@ export default function MainItem() {
           spaceBetween={20} // 상품 사이 간격
           slidesPerGroup={3} // 한 번에 넘길 슬라이드 개수
           loop={true} // 무한 루프
+          centeredSlides={true}
         >
           {shuffledProducts.map((product) => (
             <SwiperSlide
@@ -44,13 +46,20 @@ export default function MainItem() {
               className="hover:shadow-xl transition-shadow"
             >
               {/* 상품 상세정보 박스 */}
-              <div className=" border  bg-white hover:shadow-xl transition-shadow">
+              {/* 마우스 올려놓으면 사진 확대 */}
+              <div
+                className=" border h-68vh bg-white hover:shadow-xl transition-shadow "
+                onMouseEnter={() => setHoveredId(product.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
                 {/* 상품 이미지 */}
-                <div className=" aspect-h-1 aspect-w-2 overflow-visible transition-transform ease-in-out transform hover:scale-180">
+                <div className=" aspect-h-1 aspect-w-2 overflow-hidden transition-transform ease-in-out transform">
                   <img
                     alt={product.mainImageAlt}
                     src={product.mainImageSrc}
-                    className="overflow-hidden h-full w-full object-center object-cover transition-transform ease-in-out"
+                    className={`h-full w-full object-center object-cover transition-transform ease-in-out ${
+                      hoveredId === product.id ? "scale-105" : ""
+                    }`}
                   />
                 </div>
 
@@ -108,13 +117,13 @@ export default function MainItem() {
                   {/* 카드 적립율 및 포인트 */}
                   <div className="flex mb-1 items-baseline">
                     {product.cardDiscountRate && (
-                      <div className="flex items-baseline">
+                      <div className="flex items-baseline mr-3">
                         <p className="text-[11px] text-gray-700">카드</p>
                         <p className="text-blue-600 text-[11px]">
                           {product.cardDiscountRate}
                         </p>
                         <p className="text-[11px] text-gray-700">할인</p>
-                        <span className="text-gray-500">·</span>
+                        {/* <span className="text-gray-500">·</span> */}
                       </div>
                     )}
                     <p className="text-[11px] text-gray-700">11pay 최대 </p>
@@ -145,14 +154,13 @@ export default function MainItem() {
 
                 {/* 배송 날짜 및 판매 개수 */}
                 <div className="border-t border-gray-200 mx-3 mb-2"></div>
-                <div className="flex justify-between items-baseline mx-3 mb-2">
+                <div className="flex justify-between items-baseline mx-4 mb-4">
                   {product.freeDeliver ? (
-                    <div className="flex items-baseline">
-                      <p className="text-[11px] text-gray-600 mt-2">무료배송</p>
+                    <div className="flex items-baseline pb-2">
+                      <p className="text-[11px] text-gray-600 ">무료배송</p>
                       {product.deliverDate && (
                         <>
-                          <span className="text-gray-500">·</span>
-                          <p className="text-blue-600 text-[11px]">
+                          <p className="text-blue-600 text-[11px] ml-3">
                             {product.deliverDate}
                           </p>
                         </>
@@ -163,7 +171,7 @@ export default function MainItem() {
                   )}
 
                   {product.purchaseNum && (
-                    <p className="text-[11px] text-gray-600 mt-2">
+                    <p className="text-[11px] text-gray-600 mt-1">
                       {product.purchaseNum}개 구매
                     </p>
                   )}
