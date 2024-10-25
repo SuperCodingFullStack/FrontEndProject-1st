@@ -1,6 +1,7 @@
 import React from 'react';
 import Tabs1 from './Tabs1';
 import Tabs2 from './Tabs2';
+import './CategoryTab.css';
 
 const CategoryTab = () => {
     return (
